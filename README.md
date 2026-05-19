@@ -15,7 +15,7 @@
 - [Pin Configuration](#-pin-configuration-nodeMCU)
 - [Persiapan Awal](#-persiapan-awal)
 - [Kode & Penjelasan 25 Sensor](#-kode--penjelasan-25-sensor)
-  - [1. LDR (Cahaya)](#1-ldr-light-dependent-resistor)
+  - [1. LDR (Cahaya)](ldr.ino)
   - [2. Potensiometer](#2-potensiometer)
   - [3. Soil Moisture (Kelembaban Tanah)](#3-soil-moisture-sensor)
   - [4. MQ-2 Gas Sensor](#4-mq-2-gas-sensor)
