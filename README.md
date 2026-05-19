@@ -5,99 +5,104 @@
 ![Arduino](https://img.shields.io/badge/Arduino-IDE-cyan)
 ![License](https://img.shields.io/badge/License-MIT-yellow)
 
-> **Proyek lengkap 25 sensor/aktuator** yang terhubung ke NodeMCU ESP8266, dengan integrasi Blynk IoT dan kontrol 1 channel relay.
+> **Proyek lengkap 25 sensor/aktuator** yang terhubung ke NodeMCU ESP8266, dengan integrasi Blynk IoT dan kontrol 1 channel relay (Pin D0).
 
 ---
 
-## 📌 Daftar Isi
-- [Tentang Proyek](#-tentang-proyek)
-- [Daftar Sensor](#-daftar-sensor)
-- [Pin Configuration](#-pin-configuration-nodeMCU)
-- [Persiapan Awal](#-persiapan-awal)
-- [Kode & Penjelasan 25 Sensor](#-kode--penjelasan-25-sensor)
-  - [1. LDR (Cahaya)](ldr.ino)
-  - [2. Potensiometer](#2-potensiometer)
-  - [3. Soil Moisture (Kelembaban Tanah)](#3-soil-moisture-sensor)
-  - [4. MQ-2 Gas Sensor](#4-mq-2-gas-sensor)
-  - [5. Flame Sensor (Api)](#5-flame-sensor)
-  - [6. PIR Motion Sensor](#6-pir-motion-sensor)
-  - [7. Push Button](#7-push-button)
-  - [8. Buzzer](#8-buzzer)
-  - [9. LED](#9-led)
-  - [10. Relay Module](#10-relay-module)
-  - [11. DHT11 (Suhu & Kelembaban)](#11-dht11-sensor)
-  - [12. DHT22 (Akurat)](#12-dht22-sensor)
-  - [13. Ultrasonic HC-SR04](#13-ultrasonic-hc-sr04)
-  - [14. RFID RC522](#14-rfid-rc522)
-  - [15. OLED I2C Display](#15-oled-i2c-display)
-  - [16. LCD I2C Display](#16-lcd-i2c-display)
-  - [17. MPU6050 (Gyro + Accelerometer)](#17-mpu6050-sensor)
-  - [18. BMP280 (Tekanan Udara)](#18-bmp280-sensor)
-  - [19. Rain Sensor (Hujan)](#19-rain-sensor)
-  - [20. IR Obstacle Sensor](#20-ir-obstacle-sensor)
-  - [21. Sound Sensor (Suara)](#21-sound-sensor)
-  - [22. Touch Sensor](#22-touch-sensor)
-  - [23. Servo Motor](#23-servo-motor)
-  - [24. RGB LED](#24-rgb-led)
-  - [25. Keypad 4x4](#25-keypad-4x4)
-- [Setup Blynk](#-setup-blynk)
-- [Troubleshooting](#-troubleshooting)
-- [Lisensi](#-lisensi)
+## 📌 DAFTAR ISI (Klik Langsung ke File Kode)
+
+### 📁 Sensor Analog (Pin A0)
+
+| No | Sensor | File Kode (.ino) | Deskripsi Singkat |
+|----|--------|------------------|-------------------|
+| 1 | LDR (Cahaya) | [`01_LDR/ldr.ino`](01_LDR/ldr.ino) | Membaca intensitas cahaya, relay ON saat gelap |
+| 2 | Potensiometer | [`02_Potensiometer/potensiometer.ino`](02_Potensiometer/potensiometer.ino) | Membaca resistansi manual, relay ON saat >512 |
+| 3 | Soil Moisture | [`03_Soil_Moisture/soil_moisture.ino`](03_Soil_Moisture/soil_moisture.ino) | Kelembaban tanah, relay ON saat kering (pompa) |
+| 4 | MQ-2 Gas | [`04_MQ2_Gas/mq2_gas.ino`](04_MQ2_Gas/mq2_gas.ino) | Deteksi gas berbahaya, relay ON + notifikasi |
+| 19 | Rain Sensor | [`19_Rain_Sensor/rain_sensor.ino`](19_Rain_Sensor/rain_sensor.ino) | Deteksi hujan, relay ON untuk penutup jemuran |
+| 21 | Sound Sensor | [`21_Sound_Sensor/sound_sensor.ino`](21_Sound_Sensor/sound_sensor.ino) | Deteksi suara, toggle relay dengan tepuk tangan |
 
 ---
 
-## 📖 Tentang Proyek
+### 📁 Sensor Digital (Input)
 
-Proyek ini berisi **kode lengkap dan penjelasan** untuk 25 sensor/aktuator yang dapat dihubungkan ke **NodeMCU ESP8266**. Setiap sensor memiliki:
-
-- ✅ Kode Arduino yang siap pakai
-- ✅ Penjelasan cara kerja kode
-- ✅ Integrasi dengan **Blynk IoT Platform**
-- ✅ Kontrol **1 channel relay** berdasarkan pembacaan sensor
-- ✅ Virtual Pin mapping untuk Blynk
-
-### ⚠️ Catatan Penting
-- NodeMCU hanya memiliki **1 pin analog (A0)**
-- Untuk menggunakan banyak sensor analog, perlu **external ADC** (misal ADS1115)
-- Relay 5V membutuhkan **level shifter** dari 3.3V NodeMCU
+| No | Sensor | File Kode (.ino) | Deskripsi Singkat |
+|----|--------|------------------|-------------------|
+| 5 | Flame Sensor | [`05_Flame_Sensor/flame_sensor.ino`](05_Flame_Sensor/flame_sensor.ino) | Deteksi api, respon cepat, relay ON + alarm |
+| 6 | PIR Motion | [`06_PIR_Motion/pir_motion.ino`](06_PIR_Motion/pir_motion.ino) | Deteksi gerakan, relay ON 5 detik |
+| 7 | Push Button | [`07_Push_Button/push_button.ino`](07_Push_Button/push_button.ino) | Input tombol manual, toggle relay |
+| 20 | IR Obstacle | [`20_IR_Obstacle/ir_obstacle.ino`](20_IR_Obstacle/ir_obstacle.ino) | Deteksi penghalang, relay ON 500ms |
+| 22 | Touch Sensor | [`22_Touch_Sensor/touch_sensor.ino`](22_Touch_Sensor/touch_sensor.ino) | Sensor sentuh kapasitif, toggle relay |
 
 ---
 
-## 📋 Daftar Sensor
+### 📁 Aktuator (Output)
 
-| No | Sensor | Jenis Data | Pin NodeMCU | Blynk VPin Data | VPin Relay |
-|----|--------|------------|-------------|-----------------|------------|
-| 1 | LDR | Analog | A0 | V1 | V10 |
-| 2 | Potensiometer | Analog | A0 | V1 | V10 |
-| 3 | Soil Moisture | Analog | A0 | V1, V2 | V10 |
-| 4 | MQ-2 Gas | Analog/Digital | A0/D1 | V1, V2 | V10 |
-| 5 | Flame Sensor | Digital | D2 | V1 | V10 |
-| 6 | PIR Motion | Digital | D3 | V1 | V10 |
-| 7 | Push Button | Digital | D4 | V1 | V10 |
-| 8 | Buzzer | Output | D5 | - | V10 |
-| 9 | LED | Output | D6 | - | V10 |
-| 10 | Relay Module | Output | D1/D2 | V2 | V1 |
-| 11 | DHT11 | Digital | D4 | V5, V6 | V10 |
-| 12 | DHT22 | Digital | D4 | V5, V6 | V10 |
-| 13 | Ultrasonic | Digital | D5, D6 | V1, V2 | V10 |
-| 14 | RFID RC522 | SPI | D5-D8 | V1 | V10 |
-| 15 | OLED I2C | I2C | D1, D2 | - | - |
-| 16 | LCD I2C | I2C | D1, D2 | - | - |
-| 17 | MPU6050 | I2C | D1, D2 | V1 | V10 |
-| 18 | BMP280 | I2C | D1, D2 | V1, V2 | V10 |
-| 19 | Rain Sensor | Analog/Digital | A0/D3 | V1, V2 | V10 |
-| 20 | IR Obstacle | Digital | D7 | V1 | V10 |
-| 21 | Sound Sensor | Analog/Digital | A0/D2 | V1, V2 | V10 |
-| 22 | Touch Sensor | Digital | D5 | V1 | V10 |
-| 23 | Servo Motor | PWM | D4 | V1 | V10 |
-| 24 | RGB LED | PWM | D1,D2,D3 | V1 | V10 |
-| 25 | Keypad 4x4 | Digital | D1-D8 | V1 | V10 |
+| No | Aktuator | File Kode (.ino) | Deskripsi Singkat |
+|----|----------|------------------|-------------------|
+| 8 | Buzzer | [`08_Buzzer/buzzer.ino`](08_Buzzer/buzzer.ino) | Menghasilkan suara alarm, relay menyala bersamaan |
+| 9 | LED | [`09_LED/led.ino`](09_LED/led.ino) | Output cahaya, relay mengikuti status LED |
+| 10 | Relay Module | [`10_Relay_Module/relay_module.ino`](10_Relay_Module/relay_module.ino) | Kontrol perangkat listrik (butuh level shifter) |
+| 23 | Servo Motor | [`23_Servo/servo.ino`](23_Servo/servo.ino) | Penggerak sudut 0-180°, relay ON saat bergerak |
+| 24 | RGB LED | [`24_RGB_LED/rgb_led.ino`](24_RGB_LED/rgb_led.ino) | LED warna (R,G,B), relay ON saat menyala |
 
 ---
 
+### 📁 Sensor Lingkungan (Digital 1-Wire)
 
+| No | Sensor | File Kode (.ino) | Deskripsi Singkat |
+|----|--------|------------------|-------------------|
+| 11 | DHT11 | [`11_DHT11/dht11.ino`](11_DHT11/dht11.ino) | Suhu & kelembaban, relay ON saat suhu >30°C |
+| 12 | DHT22 | [`12_DHT22/dht22.ino`](12_DHT22/dht22.ino) | Suhu & kelembaban (akurat), relay ON saat suhu >30°C |
+| 13 | Ultrasonic HC-SR04 | [`13_Ultrasonic/ultrasonic.ino`](13_Ultrasonic/ultrasonic.ino) | Pengukur jarak (cm), relay ON saat jarak <20cm |
 
+---
 
+### 📁 Sensor I2C
 
+| No | Sensor | File Kode (.ino) | Deskripsi Singkat |
+|----|--------|------------------|-------------------|
+| 15 | OLED Display | [`15_OLED/oled.ino`](15_OLED/oled.ino) | Display grafis 128x64, tampilkan data sensor |
+| 16 | LCD I2C | [`16_LCD/lcd.ino`](16_LCD/lcd.ino) | Display teks 16x2, tampilkan status relay |
+| 17 | MPU6050 | [`17_MPU6050/mpu6050.ino`](17_MPU6050/mpu6050.ino) | Gyro + Accelerometer, relay ON saat goncangan |
+| 18 | BMP280 | [`18_BMP280/bmp280.ino`](18_BMP280/bmp280.ino) | Tekanan udara & suhu, relay ON saat tekanan turun |
 
-## 🔌 Pin Configuration NodeMCU
+---
+
+### 📁 Komunikasi Khusus
+
+| No | Sensor | File Kode (.ino) | Deskripsi Singkat |
+|----|--------|------------------|-------------------|
+| 14 | RFID RC522 | [`14_RFID/rfid.ino`](14_RFID/rfid.ino) | Pembaca kartu RFID (SPI), relay ON 3 detik jika valid |
+| 25 | Keypad 4x4 | [`25_Keypad/keypad.ino`](25_Keypad/keypad.ino) | Input matriks 16 tombol, toggle relay dengan * atau PIN |
+
+---
+
+## 📌 DAFTAR ISI (Klik Langsung ke File Kode)
+
+- [1. LDR (Cahaya)](ldr.ino) - Sensor cahaya analog
+- [2. Potensiometer](potensiometer.ino) - Pembaca resistansi manual
+- [3. Soil Moisture](soil_moisture.ino) - Kelembaban tanah
+- [4. MQ-2 Gas Sensor](mq2_gas.ino) - Deteksi gas berbahaya
+- [5. Flame Sensor](flame_sensor.ino) - Deteksi api
+- [6. PIR Motion Sensor](pir_motion.ino) - Deteksi gerakan
+- [7. Push Button](push_button.ino) - Input tombol manual
+- [8. Buzzer](buzzer.ino) - Alarm suara
+- [9. LED](led.ino) - Output cahaya
+- [10. Relay Module](relay_module.ino) - Kontrol perangkat listrik
+- [11. DHT11](dht11.ino) - Suhu & kelembaban
+- [12. DHT22](dht22.ino) - Suhu & kelembaban (akurat)
+- [13. Ultrasonic HC-SR04](ultrasonic.ino) - Pengukur jarak
+- [14. RFID RC522](rfid.ino) - Pembaca kartu RFID
+- [15. OLED I2C](oled.ino) - Display grafis
+- [16. LCD I2C](lcd.ino) - Display teks
+- [17. MPU6050](mpu6050.ino) - Gyro & accelerometer
+- [18. BMP280](bmp280.ino) - Tekanan udara
+- [19. Rain Sensor](rain_sensor.ino) - Deteksi hujan
+- [20. IR Obstacle Sensor](ir_obstacle.ino) - Deteksi penghalang
+- [21. Sound Sensor](sound_sensor.ino) - Deteksi suara (clap switch)
+- [22. Touch Sensor](touch_sensor.ino) - Sensor sentuh
+- [23. Servo Motor](servo.ino) - Penggerak sudut
+- [24. RGB LED](rgb_led.ino) - LED warna
+- [25. Keypad 4x4](keypad.ino) - Input matriks tombol
+
