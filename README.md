@@ -95,4 +95,9 @@ Proyek ini berisi **kode lengkap dan penjelasan** untuk 25 sensor/aktuator yang 
 
 ---
 
+
+
+
+
+
 ## 🔌 Pin Configuration NodeMCU
