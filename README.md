@@ -9,18 +9,16 @@
 
 ---
 
-## 📌 DAFTAR ISI (Klik Langsung ke File Kode)
-
 ### 📁 Sensor Analog (Pin A0)
 
 | No | Sensor | File Kode (.ino) | Deskripsi Singkat |
 |----|--------|------------------|-------------------|
-| 1 | LDR (Cahaya) | [`01_LDR/ldr.ino`](01_LDR/ldr.ino) | Membaca intensitas cahaya, relay ON saat gelap |
-| 2 | Potensiometer | [`02_Potensiometer/potensiometer.ino`](02_Potensiometer/potensiometer.ino) | Membaca resistansi manual, relay ON saat >512 |
-| 3 | Soil Moisture | [`03_Soil_Moisture/soil_moisture.ino`](03_Soil_Moisture/soil_moisture.ino) | Kelembaban tanah, relay ON saat kering (pompa) |
-| 4 | MQ-2 Gas | [`04_MQ2_Gas/mq2_gas.ino`](04_MQ2_Gas/mq2_gas.ino) | Deteksi gas berbahaya, relay ON + notifikasi |
-| 19 | Rain Sensor | [`19_Rain_Sensor/rain_sensor.ino`](19_Rain_Sensor/rain_sensor.ino) | Deteksi hujan, relay ON untuk penutup jemuran |
-| 21 | Sound Sensor | [`21_Sound_Sensor/sound_sensor.ino`](21_Sound_Sensor/sound_sensor.ino) | Deteksi suara, toggle relay dengan tepuk tangan |
+| 1 | LDR (Cahaya) | [`ldr.ino`](ldr.ino) | Membaca intensitas cahaya, relay ON saat gelap |
+| 2 | Potensiometer | [`potensiometer.ino`](potensiometer.ino) | Membaca resistansi manual, relay ON saat >512 |
+| 3 | Soil Moisture | [`soil_moisture.ino`](soil_moisture.ino) | Kelembaban tanah, relay ON saat kering (pompa) |
+| 4 | MQ-2 Gas | [`mq2_gas.ino`](mq2_gas.ino) | Deteksi gas berbahaya, relay ON + notifikasi |
+| 19 | Rain Sensor | [`rain_sensor.ino`](rain_sensor.ino) | Deteksi hujan, relay ON untuk penutup jemuran |
+| 21 | Sound Sensor | [`sound_sensor.ino`](sound_sensor.ino) | Deteksi suara, toggle relay dengan tepuk tangan |
 
 ---
 
@@ -28,11 +26,11 @@
 
 | No | Sensor | File Kode (.ino) | Deskripsi Singkat |
 |----|--------|------------------|-------------------|
-| 5 | Flame Sensor | [`05_Flame_Sensor/flame_sensor.ino`](05_Flame_Sensor/flame_sensor.ino) | Deteksi api, respon cepat, relay ON + alarm |
-| 6 | PIR Motion | [`06_PIR_Motion/pir_motion.ino`](06_PIR_Motion/pir_motion.ino) | Deteksi gerakan, relay ON 5 detik |
-| 7 | Push Button | [`07_Push_Button/push_button.ino`](07_Push_Button/push_button.ino) | Input tombol manual, toggle relay |
-| 20 | IR Obstacle | [`20_IR_Obstacle/ir_obstacle.ino`](20_IR_Obstacle/ir_obstacle.ino) | Deteksi penghalang, relay ON 500ms |
-| 22 | Touch Sensor | [`22_Touch_Sensor/touch_sensor.ino`](22_Touch_Sensor/touch_sensor.ino) | Sensor sentuh kapasitif, toggle relay |
+| 5 | Flame Sensor | [`flame_sensor.ino`](flame_sensor.ino) | Deteksi api, respon cepat, relay ON + alarm |
+| 6 | PIR Motion | [`pir_motion.ino`](pir_motion.ino) | Deteksi gerakan, relay ON 5 detik |
+| 7 | Push Button | [`push_button.ino`](push_button.ino) | Input tombol manual, toggle relay |
+| 20 | IR Obstacle | [`ir_obstacle.ino`](ir_obstacle.ino) | Deteksi penghalang, relay ON 500ms |
+| 22 | Touch Sensor | [`touch_sensor.ino`](touch_sensor.ino) | Sensor sentuh kapasitif, toggle relay |
 
 ---
 
@@ -40,11 +38,11 @@
 
 | No | Aktuator | File Kode (.ino) | Deskripsi Singkat |
 |----|----------|------------------|-------------------|
-| 8 | Buzzer | [`08_Buzzer/buzzer.ino`](08_Buzzer/buzzer.ino) | Menghasilkan suara alarm, relay menyala bersamaan |
-| 9 | LED | [`09_LED/led.ino`](09_LED/led.ino) | Output cahaya, relay mengikuti status LED |
-| 10 | Relay Module | [`10_Relay_Module/relay_module.ino`](10_Relay_Module/relay_module.ino) | Kontrol perangkat listrik (butuh level shifter) |
-| 23 | Servo Motor | [`23_Servo/servo.ino`](23_Servo/servo.ino) | Penggerak sudut 0-180°, relay ON saat bergerak |
-| 24 | RGB LED | [`24_RGB_LED/rgb_led.ino`](24_RGB_LED/rgb_led.ino) | LED warna (R,G,B), relay ON saat menyala |
+| 8 | Buzzer | [`buzzer.ino`](buzzer.ino) | Menghasilkan suara alarm, relay menyala bersamaan |
+| 9 | LED | [`led.ino`](led.ino) | Output cahaya, relay mengikuti status LED |
+| 10 | Relay Module | [`relay_module.ino`](relay_module.ino) | Kontrol perangkat listrik (butuh level shifter) |
+| 23 | Servo Motor | [`servo.ino`](servo.ino) | Penggerak sudut 0-180°, relay ON saat bergerak |
+| 24 | RGB LED | [`rgb_led.ino`](rgb_led.ino) | LED warna (R,G,B), relay ON saat menyala |
 
 ---
 
@@ -52,9 +50,9 @@
 
 | No | Sensor | File Kode (.ino) | Deskripsi Singkat |
 |----|--------|------------------|-------------------|
-| 11 | DHT11 | [`11_DHT11/dht11.ino`](11_DHT11/dht11.ino) | Suhu & kelembaban, relay ON saat suhu >30°C |
-| 12 | DHT22 | [`12_DHT22/dht22.ino`](12_DHT22/dht22.ino) | Suhu & kelembaban (akurat), relay ON saat suhu >30°C |
-| 13 | Ultrasonic HC-SR04 | [`13_Ultrasonic/ultrasonic.ino`](13_Ultrasonic/ultrasonic.ino) | Pengukur jarak (cm), relay ON saat jarak <20cm |
+| 11 | DHT11 | [`dht11.ino`](dht11.ino) | Suhu & kelembaban, relay ON saat suhu >30°C |
+| 12 | DHT22 | [`dht22.ino`](dht22.ino) | Suhu & kelembaban (akurat), relay ON saat suhu >30°C |
+| 13 | Ultrasonic HC-SR04 | [`ultrasonic.ino`](ultrasonic.ino) | Pengukur jarak (cm), relay ON saat jarak <20cm |
 
 ---
 
@@ -62,10 +60,10 @@
 
 | No | Sensor | File Kode (.ino) | Deskripsi Singkat |
 |----|--------|------------------|-------------------|
-| 15 | OLED Display | [`15_OLED/oled.ino`](15_OLED/oled.ino) | Display grafis 128x64, tampilkan data sensor |
-| 16 | LCD I2C | [`16_LCD/lcd.ino`](16_LCD/lcd.ino) | Display teks 16x2, tampilkan status relay |
-| 17 | MPU6050 | [`17_MPU6050/mpu6050.ino`](17_MPU6050/mpu6050.ino) | Gyro + Accelerometer, relay ON saat goncangan |
-| 18 | BMP280 | [`18_BMP280/bmp280.ino`](18_BMP280/bmp280.ino) | Tekanan udara & suhu, relay ON saat tekanan turun |
+| 15 | OLED Display | [`oled.ino`](oled.ino) | Display grafis 128x64, tampilkan data sensor |
+| 16 | LCD I2C | [`lcd.ino`](lcd.ino) | Display teks 16x2, tampilkan status relay |
+| 17 | MPU6050 | [`mpu6050.ino`](mpu6050.ino) | Gyro + Accelerometer, relay ON saat goncangan |
+| 18 | BMP280 | [`bmp280.ino`](bmp280.ino) | Tekanan udara & suhu, relay ON saat tekanan turun |
 
 ---
 
@@ -73,8 +71,8 @@
 
 | No | Sensor | File Kode (.ino) | Deskripsi Singkat |
 |----|--------|------------------|-------------------|
-| 14 | RFID RC522 | [`14_RFID/rfid.ino`](14_RFID/rfid.ino) | Pembaca kartu RFID (SPI), relay ON 3 detik jika valid |
-| 25 | Keypad 4x4 | [`25_Keypad/keypad.ino`](25_Keypad/keypad.ino) | Input matriks 16 tombol, toggle relay dengan * atau PIN |
+| 14 | RFID RC522 | [`rfid.ino`](rfid.ino) | Pembaca kartu RFID (SPI), relay ON 3 detik jika valid |
+| 25 | Keypad 4x4 | [`keypad.ino`](keypad.ino) | Input matriks 16 tombol, toggle relay dengan * atau PIN |
 
 ---
 
