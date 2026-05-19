@@ -1,0 +1,12 @@
+# Library yang diperlukan untuk semua sensor
+
+Blynk library by Volodymyr Shymanskyy
+DHT sensor library by Adafruit
+Adafruit Unified Sensor
+Adafruit SSD1306 by Adafruit
+LiquidCrystal I2C by Frank de Brabander
+MPU6050 by Electronic Cats
+Adafruit BMP280 Library
+MFRC522 by Miguel Balboa
+Keypad by Mark Stanley
+Servo (built-in)
